@@ -2,759 +2,707 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-  <title>Bordeaux Actu · Coline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batterie de Tests Psychologiques | BART · SVO · RAVEN · RME</title>
   <style>
-    /* ========== STYLE 100% MÉDIA LOCAL – AUCUNE ROMANCE ========== */
+    /* ---------- STYLE SOBRE, LABORATOIRE, SANS EMAJIS ---------- */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
 
     body {
-      background-color: #f3f3f3;
-      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
+      background: #edf2f7;
       min-height: 100vh;
-      transition: background 0.8s ease;
-    }
-
-    /* MODE ROMANTIQUE – DÉCLENCHÉ APRÈS CLIC */
-    body.love-mode {
-      background: linear-gradient(145deg, #ffd9e2, #ffe4e9);
-    }
-
-    body.love-mode .site {
-      background: rgba(255, 250, 245, 0.98);
-      box-shadow: 0 0 50px rgba(255, 80, 120, 0.3);
-      border-color: #ffb7c5;
-    }
-
-    .site {
-      max-width: 100%;
-      width: 100%;
-      background: white;
-      box-shadow: 0 0 20px rgba(0,0,0,0.02);
-      border: none;
-      position: relative;
-      transition: all 0.5s;
-    }
-
-    /* ========== BANDEAU MÉDIA LOCAL ========== */
-    .top-bar {
-      background: #1a2a4e;
-      color: white;
-      padding: 0.5rem 1rem;
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.7rem;
-      font-weight: 500;
-      text-transform: uppercase;
-    }
-
-    .header-media {
-      padding: 1.2rem 1.2rem 0.8rem;
-      border-bottom: 3px solid #e00909;
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: white;
-    }
-
-    .media-name {
-      font-size: 2.6rem;
-      font-weight: 800;
-      letter-spacing: -2px;
-      font-family: 'Inter', sans-serif;
-      color: #0a1a2a;
-      line-height: 1;
-    }
-
-    .media-slogan {
-      font-size: 0.65rem;
-      color: #5a5a5a;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      margin-top: 0.3rem;
-    }
-
-    /* MENU FAUX */
-    .menu-fake {
-      display: flex;
-      justify-content: space-around;
-      padding: 0.6rem 0.5rem;
-      background: #f8f8f8;
-      border-bottom: 1px solid #ddd;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #2a2a2a;
-      text-transform: uppercase;
-    }
-
-    /* ========== ARTICLE NEUTRE – AUCUN SIGNE ROMANTIQUE ========== */
-    .article {
-      padding: 1.8rem 1.5rem;
-      background: white;
-    }
-
-    .rubrique {
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      color: #e00909;
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin-bottom: 0.5rem;
-    }
-
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 0.8rem;
-      font-family: 'Inter', sans-serif;
-      color: #0a0a0a;
-    }
-
-    .chapo {
-      font-size: 1rem;
-      font-weight: 500;
-      color: #3a3a3a;
-      margin-bottom: 1.2rem;
-      border-left: 4px solid #e00909;
-      padding-left: 1rem;
-    }
-
-    .auteur {
-      font-size: 0.75rem;
-      color: #6a6a6a;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .fausse-photo {
-      background: #e6eef5;
-      height: 200px;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      font-size: 2.5rem;
-      color: #3a5a7a;
-      margin-bottom: 1.5rem;
-      border-radius: 8px;
+      padding: 24px 16px;
     }
 
-    p {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: #2a2a2a;
-      margin-bottom: 1rem;
-    }
-
-    /* ========== BOUTON RÉVÉLATEUR – STYLE BOUTON "VOIR PLUS" ========== */
-    .btn-revelateur {
-      background: #f0f0f0;
-      border: 1px solid #c0c0c0;
-      padding: 1.2rem 1.5rem;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 600;
-      color: #1e1e1e;
+    .container {
+      max-width: 880px;
       width: 100%;
-      font-family: 'Inter', sans-serif;
-      cursor: pointer;
-      transition: 0.2s;
-      margin: 1.2rem 0 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .btn-revelateur:active {
-      background: #e0e0e0;
-    }
-
-    /* ========== ÉLÉMENTS CACHÉS AU DÉBUT ========== */
-    .hidden {
-      display: none !important;
-    }
-
-    /* ========== MODE ROMANTIQUE – APPARITION APRÈS CLIC ========== */
-    .love-zone {
-      opacity: 0;
-      transition: opacity 0.6s;
-    }
-
-    body.love-mode .love-zone {
-      opacity: 1;
-    }
-
-    /* MINI-JEU REPENSÉ POUR MOBILE – "TROUVE LE MESSAGE" */
-    .jeu-container {
-      background: #fff0f3;
-      border-radius: 36px;
-      padding: 2rem 1.5rem;
-      margin: 1.8rem 0;
-      border: 2px solid #ffb6c1;
-      box-shadow: 0 8px 0 #d48c8c;
-    }
-
-    .grille-mobile {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin: 25px 0;
-    }
-
-    .carte-jeu {
-      background: #ffdae0;
-      aspect-ratio: 1 / 1;
+      background: white;
       border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.05), 0 4px 8px rgba(0,0,0,0.02);
+      padding: 36px 32px;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* en-tête neutre */
+    .header {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.2rem;
-      box-shadow: 0 6px 0 #c47a7a;
-      transition: 0.05s;
-      cursor: pointer;
-      font-weight: bold;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid #dde5ed;
+      padding-bottom: 16px;
+      margin-bottom: 28px;
     }
 
-    .carte-jeu:active {
-      transform: translateY(6px);
-      box-shadow: 0 2px 0 #c47a7a;
+    .header h1 {
+      font-weight: 500;
+      font-size: 1.6rem;
+      color: #1a2e40;
+      letter-spacing: -0.02em;
     }
 
-    .carte-jeu.retournee {
-      background: #ffb6c1;
-      color: white;
+    .progress {
+      font-size: 0.9rem;
+      color: #4a6479;
+      background: #e9f0f5;
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-weight: 450;
     }
 
-    /* PROPOSITION ROMANTIQUE */
-    .love-card {
+    /* zone de test */
+    .test-area {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-bottom: 30px;
+      border: 1px solid #eef3f8;
+      box-shadow: inset 0 1px 3px #00000008, 0 2px 4px #00000004;
+      min-height: 340px;
+    }
+
+    .test-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #1e3b4f;
+      margin-bottom: 24px;
+      border-left: 4px solid #3a6f8f;
+      padding-left: 16px;
+    }
+
+    /* boutons */
+    .btn {
       background: white;
-      border: 4px solid #ff8a9c;
-      padding: 2rem 1.8rem;
-      border-radius: 48px;
-      text-align: center;
-      margin: 2rem 0;
-      box-shadow: 0 15px 0 #b85a5a;
+      border: 1px solid #b8ccda;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #1e3b4f;
+      transition: 0.1s;
+      cursor: pointer;
+      box-shadow: 0 2px 2px rgba(0,0,0,0.02);
     }
 
-    .btn-oui {
-      background: #ff4d6d;
+    .btn:hover {
+      background: #f0f5fa;
+      border-color: #8aaec2;
+    }
+
+    .btn-primary {
+      background: #2c5f7a;
+      border-color: #1e4559;
       color: white;
-      border: none;
-      padding: 1.3rem 2.5rem;
-      font-size: 1.8rem;
-      border-radius: 100px;
-      font-weight: 800;
-      box-shadow: 0 12px 0 #b33a4a;
-      width: 100%;
-      margin: 1.2rem 0;
     }
 
-    .btn-non {
-      background: #cfcfcf;
-      color: #5e5e5e;
-      border: none;
-      padding: 0.9rem 1.8rem;
+    .btn-primary:hover {
+      background: #1e4a62;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    /* BART : ballon */
+    .balloon-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .balloon-svg {
+      width: 140px;
+      height: 160px;
+      margin-bottom: 8px;
+    }
+
+    .cash-indicator {
+      background: #f1f6fa;
+      padding: 12px 24px;
       border-radius: 60px;
       font-size: 1.2rem;
-      box-shadow: 0 8px 0 #8f8f8f;
+      color: #1e3b4f;
+      font-weight: 500;
+      margin-top: 16px;
     }
 
-    /* CONTRAT */
-    .contrat {
-      background: #fffcf0;
-      border: 6px double #d46b6b;
-      padding: 2rem 1.5rem;
-      border-radius: 32px;
-      font-family: 'Courier New', monospace;
-      margin: 2rem 0;
+    /* SVO */
+    .svo-scenario {
+      background: #f7fafc;
+      padding: 24px;
+      border-radius: 16px;
+      font-size: 1.1rem;
+      color: #1e3b4f;
+      margin-bottom: 24px;
+      border-left: 4px solid #5e8c9c;
     }
 
-    .btn-signature {
-      background: #f0b27a;
-      color: #1e1e1e;
-      font-size: 1.5rem;
-      padding: 1.2rem;
-      border-radius: 100px;
-      border: none;
-      font-weight: bold;
-      box-shadow: 0 12px 0 #aa7a4a;
-      width: 100%;
+    /* RAVEN : matrice */
+    .matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      background: #2a4050;
+      padding: 18px;
+      border-radius: 20px;
+      margin: 24px 0;
     }
 
-    /* ========== POP-UP CACA ========== */
-    .popup-caca {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
+    .matrix-cell {
+      background: white;
+      width: 80px;
+      height: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 99999;
-      backdrop-filter: blur(5px);
+      font-size: 1.8rem;
+      border-radius: 12px;
+      box-shadow: inset 0 -2px 0 #cbd5e0;
     }
 
-    .popup-content {
-      background: white;
-      padding: 2.5rem 2rem;
-      border-radius: 48px;
-      max-width: 90%;
-      width: 400px;
-      text-align: center;
-      border: 6px solid #ffb347;
-      animation: pop 0.3s;
+    .raven-choices {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin: 24px 0 12px;
     }
 
-    @keyframes pop {
-      0% { transform: scale(0.7); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    .popup-content h3 {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      color: #2d2d2d;
-    }
-
-    .btn-caca {
-      background: #a55d5d;
-      color: white;
-      border: none;
-      padding: 1.2rem 2rem;
-      border-radius: 60px;
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin: 0.8rem;
-      box-shadow: 0 8px 0 #5e3a3a;
+    .choice-cell {
+      background: #f1f7fc;
+      border: 2px solid #dce5ec;
+      width: 70px;
+      height: 70px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
       cursor: pointer;
       transition: 0.1s;
     }
 
-    .btn-caca.oui {
-      background: #b03e3e;
+    .choice-cell:hover {
+      border-color: #2c5f7a;
+      background: #e1ecf4;
     }
 
-    .btn-caca.non {
-      background: #4a7a6e;
-      box-shadow: 0 8px 0 #2e4f46;
+    /* RME */
+    .eyes-stimulus {
+      font-size: 4.8rem;
+      line-height: 1.2;
+      letter-spacing: 4px;
+      background: #f2f6fa;
+      display: inline-block;
+      padding: 16px 32px;
+      border-radius: 60px;
+      margin: 20px 0;
     }
 
-    .btn-caca:active {
-      transform: translateY(8px);
-      box-shadow: 0 2px 0 #5e3a3a;
+    .emotion-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 24px;
     }
 
-    .reaction-caca {
-      margin-top: 1.5rem;
-      font-size: 1.3rem;
-      padding: 1.2rem;
+    .emotion-item {
+      background: #f7fafc;
+      border: 1px solid #d8e2eb;
+      padding: 16px 12px;
       border-radius: 40px;
-      background: #fff3e0;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #1e3b4f;
+      cursor: pointer;
     }
 
-    /* CŒURS FLOTTANTS */
-    .floating-hearts {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0;
-      transition: opacity 0.6s;
+    .emotion-item:hover {
+      background: #e2ebf3;
+      border-color: #3a6f8f;
     }
 
-    body.love-mode .floating-hearts {
-      opacity: 0.5;
+    /* dashboard lettres */
+    .dashboard-letters {
+      background: #1a2e40;
+      border-radius: 20px;
+      padding: 28px 24px;
+      margin: 36px 0 20px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      color: white;
     }
 
-    .heart {
-      position: absolute;
-      font-size: 24px;
-      animation: float 8s infinite;
+    .score-block {
+      text-align: center;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-30px) rotate(15deg); }
+    .score-cat {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #f5e7c8;
+      margin-bottom: 4px;
     }
 
-    @media (min-width: 480px) {
-      .site { max-width: 450px; margin: 0 auto; }
+    .score-val {
+      font-size: 2rem;
+      font-weight: 700;
+      background: #0000001c;
+      padding: 8px 18px;
+      border-radius: 60px;
+    }
+
+    /* admin */
+    .admin-panel {
+      background: #e9f0f5;
+      border-radius: 18px;
+      padding: 24px;
+      margin-top: 24px;
+      border-left: 6px solid #1a2e40;
+    }
+
+    .code-input-area {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    #secretCode {
+      padding: 14px 18px;
+      font-size: 1.2rem;
+      width: 130px;
+      text-align: center;
+      border-radius: 40px;
+      border: 1px solid #a0bbcc;
+      background: white;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+
+    .interpretation-box {
+      background: #fcfaf0;
+      padding: 24px;
+      border-radius: 16px;
+      margin-top: 24px;
+      border: 1px solid #e2dccd;
+      color: #1e3b4f;
+      line-height: 1.5;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #dbe2ea;
+      margin: 30px 0 20px;
+    }
+
+    .footer-note {
+      font-size: 0.75rem;
+      color: #5e7c8c;
+      text-align: center;
+      margin-top: 20px;
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- CŒURS FLOTTANTS DISCRETS (APPAIRONT APRÈS MODE LOVE) -->
-  <div class="floating-hearts" id="hearts"></div>
-
-  <!-- POP-UP CACA (CACHÉE AU DÉPART) -->
-  <div id="popupCaca" class="popup-caca hidden">
-    <div class="popup-content">
-      <h3>🤔 Kélyann est-il un gros caca ?</h3>
-      <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-        <button id="cacaOui" class="btn-caca oui">💩 OUI</button>
-        <button id="cacaNon" class="btn-caca non">❌ NON</button>
-      </div>
-      <div id="reactionCaca" class="reaction-caca hidden"></div>
-    </div>
-  </div>
-
-  <div class="site">
-    <!-- TOP BAR MÉDIA LOCAL -->
-    <div class="top-bar">
-      <span>🔴 BORDEAUX MÉTROPOLE</span>
-      <span>16°C • Plutôt nuageux</span>
+  <div class="container">
+    <!-- en-tête sobre -->
+    <div class="header">
+      <h1>LABORATOIRE PSYCHOLOGIE</h1>
+      <span class="progress" id="progressPhase">phase 1/4</span>
     </div>
 
-    <!-- EN-TÊTE JOURNAL -->
-    <div class="header-media">
-      <div class="media-name">BORDEAUX ACTU</div>
-      <div class="media-slogan">L'INFO LOCALE EN CONTINU</div>
+    <!-- zone principale qui affiche le test en cours -->
+    <div id="testPanel" class="test-area">
+      <!-- contenu injecté dynamiquement -->
     </div>
 
-    <!-- FAUX MENU -->
-    <div class="menu-fake">
-      <span>POLITIQUE</span>
-      <span>ÉCONOMIE</span>
-      <span>SPORT</span>
-      <span>‍🎨 CULTURE</span>
+    <!-- DASHBOARD SCORES (lettres A B C D) -->
+    <div class="dashboard-letters" id="scoreDashboard">
+      <div class="score-block"><div class="score-cat">A</div><div class="score-val" id="scoreA">0</div></div>
+      <div class="score-block"><div class="score-cat">B</div><div class="score-val" id="scoreB">0</div></div>
+      <div class="score-block"><div class="score-cat">C</div><div class="score-val" id="scoreC">0</div></div>
+      <div class="score-block"><div class="score-cat">D</div><div class="score-val" id="scoreD">0</div></div>
     </div>
 
-    <!-- ========== PAGE 1 – 100% NEUTRE, AUCUNE DÉCLARATION ========== -->
-    <div id="page1">
-      <div class="article">
-        <div class="rubrique">🎨 PORTRAIT</div>
-        <h1>Coline, une artiste qui monte sur la scène bordelaise</h1>
-        <div class="chapo">
-          Rencontre avec une jeune créatrice dont le travail commence à faire parler dans les ateliers de la rive droite.
-        </div>
-        <div class="auteur">
-          <span style="background: #e0e0e0; padding: 5px 12px; border-radius: 40px;">✎ Par Rédaction</span>
-          <span>Publié le 16/02/2026</span>
-        </div>
-
-        <div class="fausse-photo">
-          🖼️ 📸
-        </div>
-
-        <p>
-          Installée dans un ancien atelier du quartier Saint-Michel, Coline prépare une exposition prévue au printemps. 
-          Son travail, mêlant peinture et collage, a attiré l'attention de plusieurs galeries indépendantes.
-        </p>
-        <p>
-          « Ce que j'aime, c'est travailler avec la lumière naturelle », explique-t-elle. « Bordeaux a cette qualité de lumière qui change tout. »
-        </p>
-        <p>
-          Rencontrée lors d'un atelier collectif, elle fait partie de cette nouvelle génération d'artistes qui réinventent la scène locale sans fanfare.
-        </p>
-        <p style="font-style: italic; color: #5a5a5a;">
-          Article mis à jour le 16 février 2026.
-        </p>
-
-        <!-- BOUTON 100% NEUTRE -->
-        <button id="btnRevelateur" class="btn-revelateur">
-          <span>🔒 Article réservé aux abonnés</span>
-          <span style="background: #1a2a4e; color: white; padding: 6px 16px; border-radius: 40px;">Révéler la suite →</span>
-        </button>
-        <p style="font-size: 0.7rem; color: #999; text-align: center; margin-top: 0.5rem;">
-          Abonnez-vous pour découvrir la suite de cet article
-        </p>
+    <!-- espace chercheur - code 1983 -->
+    <div class="admin-panel">
+      <div style="font-weight: 600; color: #1a2e40; margin-bottom: 16px;">⌨️ accès chercheur</div>
+      <div class="code-input-area">
+        <input type="password" id="secretCode" placeholder="code" maxlength="4">
+        <button id="unlockBtn" class="btn" style="background:#1a2e40; color:white; border:none;">déverrouiller</button>
+        <button id="resetBtn" class="btn">réinitialiser</button>
       </div>
-
-      <!-- FAKE COMMENTAIRES -->
-      <div style="padding: 1.5rem; border-top: 1px solid #eee;">
-        <p style="font-weight: 600; margin-bottom: 1rem;">1 commentaire</p>
-        <div style="display: flex; gap: 12px;">
-          <span style="background: #d0d0d0; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">👤</span>
-          <div>
-            <span style="font-weight: 600;">Jean_M</span>
-            <p style="font-size: 0.8rem;">Hâte de voir l'exposition !</p>
-          </div>
-        </div>
+      <div id="adminInterpretation" class="interpretation-box hidden">
+        <p id="interpText" style="white-space: pre-line;"></p>
       </div>
     </div>
-
-    <!-- ========== PAGE 2 – TOUT BASCULE ICI ========== -->
-    <div id="page2" class="hidden">
-     <div style="background: #ff4d6d; padding: 1.8rem 1.2rem; color: white; text-align: center;">
-        <span style="font-size: 3rem;">💌</span>
-        <h2 style="font-size: 2.2rem; margin-top: 0.5rem; color: white;">Coline…</h2>
-        <p style="font-size: 1.3rem;">C'est moi, Kélyann.</p>
-        <p style="font-size: 1.1rem; margin-top: 1rem;">Le fameux "article" là… c'était un prétexte.</p>
-      </div>
-
-      <!-- MINI-JEU : TROUVE LES 2 CŒURS -->
-      <div style="padding: 2rem 1.5rem;">
-        <div style="background: #fff9f7; border-radius: 40px; padding: 1.8rem; border: 2px solid #ffb6c1;">
-          <p style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">🎮 Un jeu pour toi</p>
-          <p style="margin-bottom: 1.8rem;">Derrière 2 de ces cartes, y'a un cœur. Trouve-les pour débloquer la suite ❤️</p>
-
-          <div class="grille-mobile" id="grilleJeu">
-            <div class="carte-jeu" data-coeur="true">❓</div>
-            <div class="carte-jeu" data-coeur="false">❓</div>
-            <div class="carte-jeu" data-coeur="false">❓</div>
-            <div class="carte-jeu" data-coeur="false">❓</div>
-            <div class="carte-jeu" data-coeur="true">❓</div>
-            <div class="carte-jeu" data-coeur="false">❓</div>
-          </div>
-
-          <div id="messageJeu" style="text-align: center; margin-top: 1.8rem; font-size: 1.1rem; font-weight: 600; min-height: 50px;">
-            ❤️ Trouve les 2 cœurs
-          </div>
-        </div>
-      </div>
-
-      <!-- PROPOSITION -->
-      <div id="propositionContainer" class="hidden" style="padding: 1.5rem;">
-        <div class="love-card">
-          <span style="font-size: 3.5rem;">🥺👉👈</span>
-          <h2 style="font-size: 2.2rem; margin: 1rem 0; color: #b04545;">Alors voilà.</h2>
-          <p style="font-size: 1.3rem; margin-bottom: 1.8rem;">
-            J'ai monté ce faux site juste pour toi. <br>L'article, le journal, tout.
-          </p>
-          <p style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1.5rem;">
-            Coline… tu veux être ma Valentine ?
-          </p>
-
-          <div style="display: flex; flex-direction: column; gap: 15px;">
-            <button id="ouiLove" class="btn-oui">❤️ OUI ❤️</button>
-            <div style="position: relative; display: flex; justify-content: center;">
-              <button id="nonLove" class="btn-non">😤 Non</button>
-              <div id="nonWarning" class="hidden" style="position: absolute; bottom: 110%; background: black; color: white; padding: 10px 18px; border-radius: 50px; white-space: nowrap;">🚫 Ah non, tu peux pas</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CONTRAT -->
-      <div id="contratContainer" class="hidden" style="padding: 1.5rem;">
-        <div class="contrat">
-          <h2 style="text-align: center; font-size: 2rem;">📜 CONTRAT</h2>
-          <p style="text-align: center; margin-bottom: 2rem;">Entre Kélyann (moi) et Coline (toi)</p>
-          <p>1️⃣ Coline accepte d'être la Valentine de Kélyann.</p>
-          <p>2️⃣ Le 16 février, j'ai trop hâte de te voir et de te faire plein de câlins.</p>
-          <p>3️⃣ Au début c'était pas gagné avec nos parents, les plannings… mais on a réussi à planifier cette rencontre.</p>
-          <p>4️⃣ Ce contrat est valable aussi longtemps que toi et moi.</p>
-          
-          <div style="margin-top: 2rem;">
-            <p style="font-weight: 700;">Signature :</p>
-            <span style="border-bottom: 3px dashed #b04545; padding-bottom: 5px; display: inline-block; width: 200px; margin-bottom: 20px;">_________________</span>
-            <button id="btnSigner" class="btn-signature">
-              ✍️ SIGNER POUR DE VRAI
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- PAGE FINALE -->
-      <div id="pageFinale" class="hidden" style="padding: 3rem 1.5rem; text-align: center;">
-        <span style="font-size: 5rem;">❤️✨</span>
-        <h1 style="font-size: 2.6rem; margin: 2rem 0; color: #b04545;">Merci, Coline.</h1>
-        <p style="font-size: 1.6rem; margin-bottom: 2rem;">T'as signé. C'est officiel.</p>
-        <div style="background: #ffe7e7; padding: 2rem; border-radius: 48px;">
-          <p style="font-size: 1.5rem; font-weight: 700;">J'ai trop hâte de te voir le 16.</p>
-          <p style="font-size: 1.3rem; margin-top: 1rem;">Et de te faire plein de câlins. ❤️</p>
-        </div>
-        <p style="margin-top: 2.5rem; font-size: 1.4rem;">— Kélyann</p>
-      </div>
-    </div>
-
-    <!-- FOOTER NEUTRE -->
-    <div style="padding: 1.2rem; text-align: center; border-top: 1px solid #ddd; color: #777; font-size: 0.65rem;">
-      BORDEAUX ACTU • Tous droits réservés • 2026
+    <div class="footer-note">
+      BART · SVO · RAVEN · RME — adaptation pour recherche
     </div>
   </div>
 
   <script>
-    (function() {
-      // ========== INIT ==========
-      const body = document.body;
-      const page1 = document.getElementById('page1');
-      const page2 = document.getElementById('page2');
-      const btnRevelateur = document.getElementById('btnRevelateur');
-      const heartsContainer = document.getElementById('hearts');
-      const popupCaca = document.getElementById('popupCaca');
-      const cacaOui = document.getElementById('cacaOui');
-      const cacaNon = document.getElementById('cacaNon');
-      const reactionCaca = document.getElementById('reactionCaca');
+    // ------------------------------------------------------------
+    //  ÉTAT CENTRAL – déroulement séquentiel imposé
+    // ------------------------------------------------------------
+    const State = {
+      // phase : 0=BART, 1=SVO, 2=RAVEN, 3=RME, 4=terminé
+      phase: 0,
+      // BART
+      bart: {
+        trialCount: 0,          // 0 à 30
+        currentPumps: 0,
+        tempMoney: 0,
+        explosionPoint: 8,
+        pumpsHistory: [],      // nombre de pompes pour ballons collectés
+        balloonsDone: 0,
+        balloonActive: true
+      },
+      // SVO
+      svo: {
+        currentIndex: 0,
+        responses: [],
+        maxItems: 6
+      },
+      // RAVEN
+      raven: {
+        currentIndex: 0,
+        score: 0,
+        maxItems: 3
+      },
+      // RME
+      rme: {
+        currentIndex: 0,
+        score: 0,
+        maxItems: 6
+      }
+    };
 
-      // Création des cœurs flottants
-      for (let i = 0; i < 20; i++) {
-        const heart = document.createElement('span');
-        heart.className = 'heart';
-        heart.innerHTML = '❤️';
-        heart.style.left = Math.random() * 100 + '%';
-        heart.style.top = Math.random() * 100 + '%';
-        heart.style.animationDelay = Math.random() * 5 + 's';
-        heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
-        heart.style.opacity = '0.3';
-        heartsContainer.appendChild(heart);
+    // ------------------------------------------------------------
+    //  MATÉRIEL STIMULI – sans emojis, formes neutres
+    // ------------------------------------------------------------
+    const SVO_ITEMS = [
+      { scenario: "vous recevez 85 € / autre 85 €   vs   vous 100 € / autre 50 €", optA: [85,85], optB: [100,50], prosocialChoice: 0 },
+      { scenario: "vous 85 € / autre 85 €   vs   vous 95 € / autre 15 €", optA: [85,85], optB: [95,15], prosocialChoice: 0 },
+      { scenario: "vous 60 € / autre 50 €   vs   vous 50 € / autre 100 €", optA: [60,50], optB: [50,100], prosocialChoice: 1 },
+      { scenario: "vous 75 € / autre 65 €   vs   vous 90 € / autre 30 €", optA: [75,65], optB: [90,30], prosocialChoice: 0 },
+      { scenario: "vous 45 € / autre 80 €   vs   vous 70 € / autre 70 €", optA: [45,80], optB: [70,70], prosocialChoice: 1 },
+      { scenario: "vous 100 € / autre 20 €   vs   vous 85 € / autre 85 €", optA: [100,20], optB: [85,85], prosocialChoice: 1 }
+    ];
+
+    const RAVEN_ITEMS = [
+      { matrix: ['◼', '◻', '◼', '◻', '◼', '◻', '◼', '◻', '❓'], options: ['◼', '◻', '▣', '◯'], correct: '◼' },
+      { matrix: ['1', '2', '3', '4', '5', '6', '7', '8', '❓'], options: ['9', '10', '11', '12'], correct: '9' },
+      { matrix: ['▲', '△', '▲', '△', '▲', '△', '▲', '△', '❓'], options: ['▲', '△', '◀', '▶'], correct: '▲' }
+    ];
+
+    const RME_ITEMS = [
+      { stimulus: '👁️ [ regard 1 ]', options: ['hostile', 'paniqué', 'amusé', 'confiant'], correct: 'confiant' },
+      { stimulus: '👁️ [ regard 2 ]', options: ['sceptique', 'jaloux', 'affectueux', 'terrifié'], correct: 'sceptique' },
+      { stimulus: '👁️ [ regard 3 ]', options: ['désireux', 'arrogant', 'gêné', 'rêveur'], correct: 'rêveur' },
+      { stimulus: '👁️ [ regard 4 ]', options: ['irrité', 'triste', 'préoccupé', 'amical'], correct: 'préoccupé' },
+      { stimulus: '👁️ [ regard 5 ]', options: ['relaxé', 'menaçant', 'surpris', 'fier'], correct: 'relaxé' },
+      { stimulus: '👁️ [ regard 6 ]', options: ['dubitatif', 'en colère', 'reconnaissant', 'affligé'], correct: 'dubitatif' }
+    ];
+
+    // ------------------------------------------------------------
+    //  RENDU SELON LA PHASE (séquentiel)
+    // ------------------------------------------------------------
+    function renderCurrentPhase() {
+      const panel = document.getElementById('testPanel');
+      let progressText = '';
+
+      if (State.phase === 0) {
+        progressText = 'phase 1/4 · BART';
+        panel.innerHTML = renderBART();
+      } else if (State.phase === 1) {
+        progressText = 'phase 2/4 · SVO';
+        panel.innerHTML = renderSVO();
+      } else if (State.phase === 2) {
+        progressText = 'phase 3/4 · matrices Raven';
+        panel.innerHTML = renderRAVEN();
+      } else if (State.phase === 3) {
+        progressText = 'phase 4/4 · RME';
+        panel.innerHTML = renderRME();
+      } else if (State.phase === 4) {
+        progressText = 'terminé';
+        panel.innerHTML = '<div style="text-align:center; padding:40px;"><h2 style="font-weight:400;">évaluation terminée</h2><p style="margin-top:24px; color:#3f5e70;">vous pouvez consulter votre profil (lettres A–D) ci-dessous.</p></div>';
       }
 
-      // ========== BASCULE TOTALE AU CLIC ==========
-      btnRevelateur.addEventListener('click', function() {
-        body.classList.add('love-mode');
-        page1.classList.add('hidden');
-        page2.classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        document.querySelectorAll('.heart').forEach(h => h.style.opacity = '0.7');
-        
-        // POP-UP CACA APPARAÎT 1 SECONDE APRÈS
-        setTimeout(() => {
-          popupCaca.classList.remove('hidden');
-        }, 1000);
-      });
+      document.getElementById('progressPhase').innerText = progressText;
+      updateScoreUI();
+      attachPhaseEvents();
+    }
 
-      // ========== POP-UP CACA ==========
-      cacaOui.addEventListener('click', function() {
-        reactionCaca.classList.remove('hidden');
-        reactionCaca.innerHTML = '😤 Hé oh ! Bon… un peu, oui. Mais t’as quand même signé hein ! <br><span style="font-size:2rem;">💩❤️</span>';
-        // Animation Kélyann énervé
-        this.style.transform = 'scale(0.9)';
-        setTimeout(() => {
-          popupCaca.classList.add('hidden');
-          reactionCaca.classList.add('hidden');
-        }, 2500);
-      });
-
-      cacaNon.addEventListener('click', function() {
-        reactionCaca.classList.remove('hidden');
-        reactionCaca.innerHTML = '😊 Mdr merci c’est gentil. Good girl que t’es ! <br><span style="font-size:2rem;">✨👼💖</span>';
-        this.style.transform = 'scale(0.9)';
-        setTimeout(() => {
-          popupCaca.classList.add('hidden');
-          reactionCaca.classList.add('hidden');
-        }, 2500);
-      });
-
-      // ========== MINI-JEU : TROUVE LES 2 CŒURS ==========
-      const cartes = document.querySelectorAll('.carte-jeu');
-      const messageJeu = document.getElementById('messageJeu');
-      let coeursTrouves = 0;
-      const propositionContainer = document.getElementById('propositionContainer');
-
-      cartes.forEach(carte => {
-        carte.addEventListener('click', function() {
-          if (this.classList.contains('retournee')) return;
-          
-          const aCoeur = this.dataset.coeur === 'true';
-          
-          if (aCoeur) {
-            this.textContent = '❤️';
-            this.classList.add('retournee');
-            coeursTrouves++;
-            
-            if (coeursTrouves === 2) {
-              messageJeu.textContent = '🎉 BRAVO ! Tu as trouvé tous les cœurs !';
-              messageJeu.style.color = '#d44';
-              propositionContainer.classList.remove('hidden');
-              for (let i = 0; i < 12; i++) {
-                setTimeout(() => {
-                  let h = document.createElement('span');
-                  h.innerHTML = '❤️';
-                  h.style.position = 'fixed';
-                  h.style.left = Math.random() * 100 + '%';
-                  h.style.top = Math.random() * 100 + '%';
-                  h.style.fontSize = (Math.random() * 30 + 20) + 'px';
-                  h.style.pointerEvents = 'none';
-                  h.style.zIndex = 9999;
-                  h.style.transition = '0.8s';
-                  document.body.appendChild(h);
-                  setTimeout(() => h.remove(), 800);
-                }, i * 40);
-              }
-            } else {
-              messageJeu.textContent = '❤️ 1 cœur trouvé ! Encore 1 !';
-            }
-          } else {
-            this.textContent = '❌';
-            this.classList.add('retournee');
-            this.style.background = '#e0a5a5';
-            messageJeu.textContent = '😢 Pas de cœur ici... continue !';
-          }
-        });
-      });
-
-      // ========== BOUTON NON QUI FUIT ==========
-      const nonLove = document.getElementById('nonLove');
-      const nonWarning = document.getElementById('nonWarning');
-      
-      if (nonLove) {
-        nonLove.addEventListener('click', function(e) {
-          e.preventDefault();
-          nonWarning.classList.remove('hidden');
-          nonLove.style.transform = 'translateX(' + (Math.random() * 80 - 40) + 'px) translateY(' + (Math.random() * 40 - 20) + 'px)';
-          setTimeout(() => nonWarning.classList.add('hidden'), 1200);
-        });
-
-        nonLove.addEventListener('mouseenter', function() {
-          nonLove.style.transform = 'translateX(' + (Math.random() * 100 - 50) + 'px) translateY(' + (Math.random() * 60 - 30) + 'px)';
-        });
+    // ---------- BART ----------
+    function renderBART() {
+      if (State.bart.balloonsDone >= 30) {
+        State.phase = 1; // passage auto
+        renderCurrentPhase();
+        return '';
+      }
+      // initialiser essai si inactif
+      if (!State.bart.balloonActive) {
+        State.bart.balloonActive = true;
+        State.bart.currentPumps = 0;
+        State.bart.tempMoney = 0;
+        State.bart.explosionPoint = Math.floor(Math.random() * 18) + 6; // 6-23
       }
 
-      // ========== OUI = CONTRAT ==========
-      const ouiLove = document.getElementById('ouiLove');
-      const contratContainer = document.getElementById('contratContainer');
-      
-      ouiLove.addEventListener('click', function() {
-        propositionContainer.classList.add('hidden');
-        contratContainer.classList.remove('hidden');
-        for (let i = 0; i < 20; i++) {
-          setTimeout(() => {
-            let h = document.createElement('span');
-            h.innerHTML = '❤️';
-            h.style.position = 'fixed';
-            h.style.left = Math.random() * 100 + '%';
-            h.style.top = Math.random() * 100 + '%';
-            h.style.fontSize = (Math.random() * 30 + 20) + 'px';
-            h.style.pointerEvents = 'none';
-            h.style.zIndex = 9999;
-            document.body.appendChild(h);
-            setTimeout(() => h.remove(), 900);
-          }, i * 30);
-        }
-      });
+      let size = 80 + State.bart.currentPumps * 3;
+      let html = `<div class="balloon-container">
+        <div class="test-title">Balloon Analogue Risk Task (BART)</div>
+        <div>essai ${State.bart.balloonsDone + 1} / 30</div>
+        <div class="balloon-svg">
+          <svg width="${size}" height="${size+20}" viewBox="0 0 100 120">
+            <circle cx="50" cy="50" r="${30 + State.bart.currentPumps*1.2}" fill="#c94f4f" stroke="#642424" stroke-width="1.5"/>
+            <line x1="50" y1="65" x2="50" y2="95" stroke="#7c5e4a" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="cash-indicator">gain temporaire : ${State.bart.tempMoney} points</div>
+        <div class="btn-group">
+          <button id="pumpBtn" class="btn">gonfler (+5)</button>
+          <button id="collectBtn" class="btn btn-primary">collecter</button>
+        </div>
+      </div>`;
+      return html;
+    }
 
-      // ========== SIGNATURE = PAGE FINALE ==========
-      const btnSigner = document.getElementById('btnSigner');
-      const pageFinale = document.getElementById('pageFinale');
-      
-      btnSigner.addEventListener('click', function() {
-        contratContainer.classList.add('hidden');
-        pageFinale.classList.remove('hidden');
-        for (let i = 0; i < 40; i++) {
-          setTimeout(() => {
-            let h = document.createElement('span');
-            h.innerHTML = ['❤️','🧡','💛','💚','💙','💜','✨','💖'][Math.floor(Math.random() * 8)];
-            h.style.position = 'fixed';
-            h.style.left = Math.random() * 100 + '%';
-            h.style.top = Math.random() * 100 + '%';
-            h.style.fontSize = (Math.random() * 35 + 20) + 'px';
-            h.style.pointerEvents = 'none';
-            h.style.zIndex = 9999;
-            document.body.appendChild(h);
-            setTimeout(() => h.remove(), 1400);
-          }, i * 25);
-        }
+    // ---------- SVO ----------
+    function renderSVO() {
+      if (State.svo.currentIndex >= State.svo.maxItems) {
+        State.phase = 2;
+        renderCurrentPhase();
+        return '';
+      }
+      let item = SVO_ITEMS[State.svo.currentIndex];
+      return `<div>
+        <div class="test-title">Social Value Orientation</div>
+        <div>question ${State.svo.currentIndex+1} / ${State.svo.maxItems}</div>
+        <div class="svo-scenario">${item.scenario}</div>
+        <div class="btn-group">
+          <button id="svoOptA" class="btn">option A</button>
+          <button id="svoOptB" class="btn">option B</button>
+        </div>
+      </div>`;
+    }
+
+    // ---------- RAVEN ----------
+    function renderRAVEN() {
+      if (State.raven.currentIndex >= State.raven.maxItems) {
+        State.phase = 3;
+        renderCurrentPhase();
+        return '';
+      }
+      let item = RAVEN_ITEMS[State.raven.currentIndex];
+      let matrixHtml = '<div class="matrix-grid">';
+      for (let i=0; i<9; i++) {
+        matrixHtml += `<div class="matrix-cell">${item.matrix[i]}</div>`;
+      }
+      matrixHtml += '</div><div class="raven-choices">';
+      item.options.forEach((opt, idx) => {
+        matrixHtml += `<div class="choice-cell" data-choice="${opt}">${opt}</div>`;
       });
-    })();
+      matrixHtml += '</div>';
+      return `<div><div class="test-title">Matrices de Raven</div>${matrixHtml}</div>`;
+    }
+
+    // ---------- RME ----------
+    function renderRME() {
+      if (State.rme.currentIndex >= State.rme.maxItems) {
+        State.phase = 4;
+        renderCurrentPhase();
+        return '';
+      }
+      let eye = RME_ITEMS[State.rme.currentIndex];
+      let optionsHtml = '<div class="emotion-grid">';
+      eye.options.forEach(opt => {
+        optionsHtml += `<div class="emotion-item" data-emotion="${opt}">${opt}</div>`;
+      });
+      optionsHtml += '</div>';
+      return `<div>
+        <div class="test-title">Reading the Mind in the Eyes</div>
+        <div>stimulus ${State.rme.currentIndex+1} / ${State.rme.maxItems}</div>
+        <div class="eyes-stimulus">${eye.stimulus}</div>
+        ${optionsHtml}
+      </div>`;
+    }
+
+    // ------------------------------------------------------------
+    //  ATTACH DES ÉVÈNEMENTS SELON PHASE
+    // ------------------------------------------------------------
+    function attachPhaseEvents() {
+      if (State.phase === 0) attachBART();
+      else if (State.phase === 1) attachSVO();
+      else if (State.phase === 2) attachRAVEN();
+      else if (State.phase === 3) attachRME();
+    }
+
+    function attachBART() {
+      const pump = document.getElementById('pumpBtn');
+      const collect = document.getElementById('collectBtn');
+      if (pump) pump.onclick = () => {
+        if (!State.bart.balloonActive || State.bart.balloonsDone>=30) return;
+        State.bart.currentPumps++;
+        State.bart.tempMoney += 5;
+        if (State.bart.currentPumps >= State.bart.explosionPoint) {
+          // explosion
+          State.bart.tempMoney = 0;
+          State.bart.balloonActive = false;
+          State.bart.balloonsDone++;
+          renderCurrentPhase();
+        } else {
+          renderCurrentPhase();
+        }
+      };
+      if (collect) collect.onclick = () => {
+        if (State.bart.balloonActive && State.bart.balloonsDone<30) {
+          State.bart.pumpsHistory.push(State.bart.currentPumps);
+          State.bart.balloonActive = false;
+          State.bart.balloonsDone++;
+          if (State.bart.balloonsDone >= 30) State.phase = 1;
+          renderCurrentPhase();
+        }
+      };
+    }
+
+    function attachSVO() {
+      const optA = document.getElementById('svoOptA');
+      const optB = document.getElementById('svoOptB');
+      if (optA) optA.onclick = () => { recordSVO(0); };
+      if (optB) optB.onclick = () => { recordSVO(1); };
+    }
+
+    function recordSVO(choice) {
+      State.svo.responses.push(choice);
+      State.svo.currentIndex++;
+      if (State.svo.currentIndex >= State.svo.maxItems) State.phase = 2;
+      renderCurrentPhase();
+      updateScoreUI();
+    }
+
+    function attachRAVEN() {
+      document.querySelectorAll('.choice-cell').forEach(el => {
+        el.onclick = (e) => {
+          let chosen = e.currentTarget.dataset.choice;
+          let correct = RAVEN_ITEMS[State.raven.currentIndex].correct;
+          if (chosen === correct) State.raven.score++;
+          State.raven.currentIndex++;
+          if (State.raven.currentIndex >= State.raven.maxItems) State.phase = 3;
+          renderCurrentPhase();
+          updateScoreUI();
+        };
+      });
+    }
+
+    function attachRME() {
+      document.querySelectorAll('.emotion-item').forEach(el => {
+        el.onclick = (e) => {
+          let chosen = e.currentTarget.dataset.emotion;
+          let correct = RME_ITEMS[State.rme.currentIndex].correct;
+          if (chosen === correct) State.rme.score++;
+          State.rme.currentIndex++;
+          if (State.rme.currentIndex >= State.rme.maxItems) State.phase = 4;
+          renderCurrentPhase();
+          updateScoreUI();
+        };
+      });
+    }
+
+    // ------------------------------------------------------------
+    //  CALCUL DES SCORES POUR AFFICHAGE (lettres)
+    // ------------------------------------------------------------
+    function computeScoreA() {
+      if (State.bart.pumpsHistory.length === 0) return 0;
+      let sum = State.bart.pumpsHistory.reduce((a,b)=>a+b,0);
+      return Math.round((sum / State.bart.pumpsHistory.length) * 6); // échelle
+    }
+
+    function computeScoreB() {
+      let prosocialCount = 0;
+      State.svo.responses.forEach((resp, idx) => {
+        if (SVO_ITEMS[idx] && resp === SVO_ITEMS[idx].prosocialChoice) prosocialCount++;
+      });
+      return prosocialCount * 28; // étalement
+    }
+
+    function computeScoreC() {
+      return State.raven.score * 55;
+    }
+
+    function computeScoreD() {
+      return State.rme.score * 28;
+    }
+
+    function updateScoreUI() {
+      document.getElementById('scoreA').innerText = computeScoreA();
+      document.getElementById('scoreB').innerText = computeScoreB();
+      document.getElementById('scoreC').innerText = computeScoreC();
+      document.getElementById('scoreD').innerText = computeScoreD();
+    }
+
+    // ------------------------------------------------------------
+    //  ADMIN : CODE 1983
+    // ------------------------------------------------------------
+    function unlockInterpretation() {
+      let code = document.getElementById('secretCode').value;
+      if (code === '1983') {
+        let interp = `INTERPRÉTATION DES CATÉGORIES (CHERCHEUR) :
+
+A (score ${computeScoreA()}) : BART – moyenne pompes ajustée. Plus le score est élevé, plus la prise de risque est forte.
+
+B (score ${computeScoreB()}) : SVO – score de prosocialité. >120 = prosocial ; 60-120 = individualiste ; <60 = compétitif.
+
+C (score ${computeScoreC()}) : Raven – raisonnement logique. Sur 165 max, capacité d'abstraction et d'induction.
+
+D (score ${computeScoreD()}) : RME – théorie de l'esprit. Sur 168 max, sensibilité aux états mentaux d'autrui.`;
+        document.getElementById('interpText').innerText = interp;
+        document.getElementById('adminInterpretation').classList.remove('hidden');
+      } else {
+        alert('code erroné');
+      }
+    }
+
+    // réinitialisation
+    function resetSession() {
+      window.location.reload();
+    }
+
+    // ------------------------------------------------------------
+    //  INIT
+    // ------------------------------------------------------------
+    window.onload = function() {
+      // initialisation BART
+      State.bart.balloonActive = true;
+      State.bart.balloonsDone = 0;
+      State.bart.currentPumps = 0;
+      State.bart.tempMoney = 0;
+      State.bart.explosionPoint = Math.floor(Math.random() * 18) + 6;
+
+      renderCurrentPhase();
+
+      document.getElementById('unlockBtn').addEventListener('click', unlockInterpretation);
+      document.getElementById('resetBtn').addEventListener('click', resetSession);
+    };
   </script>
 </body>
 </html>
